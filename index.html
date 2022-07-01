@@ -19,8 +19,7 @@
             <div class="line">
                 Room Name : <input type="text" id="roomName" size="10">
                 <form name="playerNum" align="center">
-                    <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
-                        id="playerNum">
+                    <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white" id="playerNum">
                         <OPTION SELECTED>Player</OPTION>
                         <OPTION value=1>1</OPTION>
                         <OPTION value=2>2</OPTION>
@@ -29,7 +28,7 @@
                 <button id="roomNameEnter">Enter</button>
             </div>
 
-            
+
 
             <div>
                 Your Name : <input type="text" id="playerName"> <button id="playerNameEnter">Enter</button>
@@ -190,9 +189,9 @@
                         <div id="secondBox1-Id" class="secondBox secondBox1">
                             <div class="flexbox">
                                 <!-- box1 -->
-                                <form name="secondForm1" align="center">
-                                    <SELECT NAME="secondColor1" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
+                                <form name="secondForm1" salign="center">
+                                    <SELECT NAME="secondColor1"
+                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList1">
                                         <OPTION SELECTED>色を選択</OPTION>
                                         <OPTION value=0>Red</OPTION>
                                         <OPTION value=1>Orange</OPTION>
@@ -214,8 +213,8 @@
                             <div class="flexbox">
                                 <!-- box2 -->
                                 <form name="secondForm2" align="center">
-                                    <SELECT NAME="secondColor2" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
+                                    <SELECT NAME="secondColor2"
+                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList2">
                                         <OPTION SELECTED>色を選択</OPTION>
                                         <OPTION value=0>Red</OPTION>
                                         <OPTION value=1>Orange</OPTION>
@@ -241,8 +240,8 @@
                             <div class="flexbox">
                                 <!-- box3 -->
                                 <form name="secondForm3" align="center">
-                                    <SELECT NAME="secondColor3" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
+                                    <SELECT NAME="secondColor3"
+                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList3">
                                         <OPTION SELECTED>色を選択</OPTION>
                                         <OPTION value=0>Red</OPTION>
                                         <OPTION value=1>Orange</OPTION>
@@ -263,8 +262,8 @@
                         <div id="secondBox4-Id" class="secondBox secondBox4">
                             <div class="flexbox">
                                 <form name="secondForm4" align="center">
-                                    <SELECT NAME="secondColor4" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
+                                    <SELECT NAME="secondColor4"
+                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList4">
                                         <OPTION SELECTED>色を選択</OPTION>
                                         <OPTION value=0>Red</OPTION>
                                         <OPTION value=1>Orange</OPTION>
@@ -319,25 +318,38 @@
         var friendName;
         var playerNum;
         var isRoomCreated = false; //ルームが作成されたかを確認
+        var isAnswerSet = false;
+        var isTransitionToCall = false;
+        var whichTurn = 0;
 
+        document.getElementById("roomName").disabled = false;
+        document.getElementById("roomNameEnter").disabled = false;
+        document.getElementById("playerNum").disabled = false;
         document.getElementById("playerNameEnter").disabled = true;
+        document.getElementById("sendAnswerButton").disabled = false;
+        document.getElementById("callButton").disabled = true;
+
+        document.getElementById("secondColorList1").disabled = false;
+        document.getElementById("secondColorList2").disabled = false;
+        document.getElementById("secondColorList3").disabled = false;
+        document.getElementById("secondColorList4").disabled = false;
+
 
         $("#roomNameEnter").on("click", function () { //ルーム作成
-            var roomName = $("#roomName").val(); //ルーム名入力
-            const playerNum = $("#playerNum").val() //プレイヤー番号取得
+            roomName = $("#roomName").val(); //ルーム名入力
+            playerNum = $("#playerNum").val() //プレイヤー番号取得
 
             update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
                 RoomName: roomName,
+                whichTurn: 0,
             });
-
-            isRoomCreated = true;
-            document.getElementById("playerNameEnter").disabled = false;
 
             //以下オブジェクトの初期化: 使う要素を全て書き出す
 
             if (playerNum == "1") {
                 update(ref(db, roomName + '/player1'), {
                     Name: "",
+                    isAnswerSet: false,
                     AnswerColor: [],
                     P1CallColor: []
                 });
@@ -346,10 +358,18 @@
             if (playerNum == "2") {
                 update(ref(db, roomName + '/player2'), {
                     Name: "",
+                    isAnswerSet: false,
                     AnswerColor: [],
                     P2CallColor: []
                 });
             }
+
+            isRoomCreated = true;
+            document.getElementById("roomNameEnter").disabled = true;
+            document.getElementById("roomName").disabled = true;
+            document.getElementById("playerNum").disabled = true;
+            document.getElementById("playerName").disabled = false;
+            document.getElementById("playerNameEnter").disabled = false;
         });
 
         setTimeout(() => { //10秒間RoomNameがEnterされなかったらアラート/リロード
@@ -378,6 +398,9 @@
                     Name: playerName,
                 });
             }
+
+            document.getElementById("playerName").disabled = true;
+            document.getElementById("playerNameEnter").disabled = true;
         });
 
         var color = ['#ff7f7f', '#ffbf7f', '#ffff7f', '#bfff7f', '#7fffbf', '#7fffff', '#7fbfff', '#bf7fff', '#ff7fff', '#f5f5f5'];
@@ -491,14 +514,22 @@
             if (playerNum == "1") {
                 update(ref(db, roomName + '/player1'), {
                     AnswerColor: second_input_ans,
+                    isAnswerSet: true,
                 });
             }
 
             if (playerNum == "2") {
                 update(ref(db, roomName + '/player2'), {
                     AnswerColor: second_input_ans,
+                    isAnswerSet: true,
                 });
             }
+            
+            document.getElementById("sendAnswerButton").disabled = true;
+            document.getElementById("secondColorList1").disabled = true;
+            document.getElementById("secondColorList2").disabled = true;
+            document.getElementById("secondColorList3").disabled = true;
+            document.getElementById("secondColorList4").disabled = true;
         });
 
         $("#callButton").on("click", function () { //コールボタンの処理
@@ -512,21 +543,32 @@
             judge_result(input_ans, ans); //Hit, Blowを算出
 
             if (playerNum == "1") { //データベースにCall内容を送信
+                update(ref(db, roomName), {
+                    whichTurn: 2,
+                });
                 update(ref(db, roomName + '/player1'), {
                     P1CallColor: input_ans,
                 });
             }
 
             if (playerNum == "2") { //データベースにCall内容を送信
+                update(ref(db, roomName), {
+                    whichTurn: 1,
+                });
                 update(ref(db, roomName + '/player2'), {
                     P2CallColor: input_ans,
                 });
             }
+
+            document.getElementById("sendAnswerButton").disabled = true;
         });
 
+        var hit = 0;
+        var blow = 0;
+
         function judge_result(input_ans, ans) { //hit, blowを計算
-            var hit = 0;
-            var blow = 0;
+            hit = 0;
+            blow = 0;
 
             for (let i = 0; i < 4; i++) { //hit, blowを求める処理
                 for (let j = 0; j < 4; j++) {
@@ -542,7 +584,7 @@
             }
 
             console.log("hit: " + hit);
-            console.log("blow" + blow);
+            console.log("blow: " + blow);
         }
 
         setTimeout(() => { //10秒後からオブジェクトの更新の監視を開始
@@ -552,6 +594,11 @@
 
             onValue(playerInfoRef, (snapshot) => { //オブジェクトに変更があった際にデータを取得
                 var playerNum = $("#playerNum").val();
+                whichTurn = snapshot.val().whichTurn;
+
+                var isAnswerSet1
+                var isAnswerSet2
+
                 if (playerNum == "1") {
                     friendName = snapshot.val().player2.Name;
                     ans = snapshot.val().player2.AnswerColor;
@@ -562,6 +609,43 @@
                     ans = snapshot.val().player1.AnswerColor;
                     friendCallColor = snapshot.val().player1.P1CallColor;
                 }
+
+                isAnswerSet1 = snapshot.val().player1.isAnswerSet;
+                isAnswerSet2 = snapshot.val().player2.isAnswerSet;
+
+                console.log("whichTurn: " + whichTurn);
+
+                //ここから下に処理
+
+                console.log("isAnswerSet1: " + isAnswerSet1);
+                console.log("isAnswerSet2: " + isAnswerSet2);
+                console.log("isTransitionToCall: " + isTransitionToCall)
+
+                if (isAnswerSet1 == true && isAnswerSet2 == true && isTransitionToCall == false) {
+                    update(ref(db, roomName), { //両者正答を設定したらP1のターンから始める
+                        whichTurn: 1,
+                    });
+                    isTransitionToCall = true;
+                }
+
+                if (playerNum == 1) {
+                    if (whichTurn == 1) { //P1のターンのときP1のコールボタンを有効化
+                        document.getElementById("callButton").disabled = false;
+                    }
+                    else {
+                        document.getElementById("callButton").disabled = true;
+                    }
+                }
+
+                if (playerNum == 2) {
+                    if (whichTurn == 2) { //P2のターンのときP2のコールボタンを有効化
+                        document.getElementById("callButton").disabled = false;
+                    }
+                    else {
+                        document.getElementById("callButton").disabled = true;
+                    }
+                }
+
                 console.log("対戦相手: " + friendName);
                 console.log("答え: " + ans);
                 console.log("相手のコール: " + friendCallColor);
