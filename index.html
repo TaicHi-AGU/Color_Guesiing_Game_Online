@@ -16,16 +16,23 @@
             <p align="center"></p>
             <p></p>
 
-            <div>
-                Room Name : <input type="text" id="roomName"> <button id="roomNameEnter">Enter</button>
+            <div class="line">
+                Room Name : <input type="text" id="roomName" size="10">
+                <form name="playerNum" align="center">
+                    <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
+                        id="playerNum">
+                        <OPTION SELECTED>Player</OPTION>
+                        <OPTION value=1>1</OPTION>
+                        <OPTION value=2>2</OPTION>
+                    </SELECT>
+                </form>
+                <button id="roomNameEnter">Enter</button>
             </div>
 
-            <div>
-                Your Name : <input type="text" id="playerName">
-            </div>
+            
 
             <div>
-                Player Number : <input type="text" id="playerNum"> <button id="playerNumEnter">Enter</button>
+                Your Name : <input type="text" id="playerName"> <button id="playerNameEnter">Enter</button>
             </div>
 
             <div class="outsideBox">
@@ -313,29 +320,36 @@
         var playerNum;
         var isRoomCreated = false; //ルームが作成されたかを確認
 
+        document.getElementById("playerNameEnter").disabled = true;
+
         $("#roomNameEnter").on("click", function () { //ルーム作成
             var roomName = $("#roomName").val(); //ルーム名入力
+            const playerNum = $("#playerNum").val() //プレイヤー番号取得
 
-            set(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
+            update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
                 RoomName: roomName,
             });
 
             isRoomCreated = true;
+            document.getElementById("playerNameEnter").disabled = false;
 
             //以下オブジェクトの初期化: 使う要素を全て書き出す
 
-            update(ref(db, roomName + '/player1'), {
-                Name: "",
-                AnswerColor: [],
-                P1CallColor: []
-            });
+            if (playerNum == "1") {
+                update(ref(db, roomName + '/player1'), {
+                    Name: "",
+                    AnswerColor: [],
+                    P1CallColor: []
+                });
+            }
 
-
-            update(ref(db, roomName + '/player2'), {
-                Name: "",
-                AnswerColor: [],
-                P2CallColor: []
-            });
+            if (playerNum == "2") {
+                update(ref(db, roomName + '/player2'), {
+                    Name: "",
+                    AnswerColor: [],
+                    P2CallColor: []
+                });
+            }
         });
 
         setTimeout(() => { //10秒間RoomNameがEnterされなかったらアラート/リロード
@@ -348,7 +362,7 @@
         }, 10000);
 
 
-        $("#playerNumEnter").on("click", function () { //プレイヤー名をデータベースに登録
+        $("#playerNameEnter").on("click", function () { //プレイヤー名をデータベースに登録
             const playerName = $("#playerName").val() //プレイヤー名取得
             const playerNum = $("#playerNum").val() //プレイヤー番号取得
             var roomName = $("#roomName").val(); //ルーム名取得
