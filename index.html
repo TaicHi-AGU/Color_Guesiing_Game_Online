@@ -302,6 +302,8 @@
             measurementId: "G-WZ3Z7NTFZN"
         };
 
+        console.log("Hello");
+
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app); //RealtimeDBに接続
 
@@ -309,7 +311,6 @@
         var playerName;
         var friendName;
         var playerNum;
-        var friendCallColor = [];
         var isRoomCreated = false; //ルームが作成されたかを確認
 
         $("#roomNameEnter").on("click", function () { //ルーム作成
@@ -367,11 +368,10 @@
 
         var color = ['#ff7f7f', '#ffbf7f', '#ffff7f', '#bfff7f', '#7fffbf', '#7fffff', '#7fbfff', '#bf7fff', '#ff7fff', '#f5f5f5'];
 
-        var input_ans = []; //入力した解答を保存
-
-        var second_input_ans = [] //相手に自分の正答を送るための配列
-
-        var ans = []; //問題の解答を保存
+        var input_ans = []; //入力した解答を保存(webで入力->データベースに保存)
+        var second_input_ans = [] //相手に送る正解を保存(webで入力->データベースに保存)
+        var ans = []; //問題の解答を保存(データベースから取得)
+        var friendCallColor = []; //相手のコール(データベースから取得)
 
         function enterColor1(idname) { //入力した色をセルに反映(左上)
             var obj = document.getElementById(idname);
@@ -380,7 +380,6 @@
             obj.style.backgroundColor = color[colorIndex];
             input_ans[0] = colorIndex
         }
-
         function enterColor2(idname) { //入力した色をセルに反映(右上)
             var obj = document.getElementById(idname);
             const num = document.form2.color2.selectedIndex;
@@ -388,7 +387,6 @@
             obj.style.backgroundColor = color[colorIndex];
             input_ans[1] = colorIndex
         }
-
         function enterColor3(idname) { //入力した色をセルに反映(左下)
             var obj = document.getElementById(idname);
             const num = document.form3.color3.selectedIndex;
@@ -396,7 +394,6 @@
             obj.style.backgroundColor = color[colorIndex];
             input_ans[2] = colorIndex
         }
-
         function enterColor4(idname) { //入力した色をセルに反映(右下)
             var obj = document.getElementById(idname);
             const num = document.form4.color4.selectedIndex;
@@ -404,7 +401,6 @@
             obj.style.backgroundColor = color[colorIndex];
             input_ans[3] = colorIndex
         }
-
         function secondEnterColor1(idname) { //入力した色をセル(second)に反映(左上)
             var obj = document.getElementById(idname);
             const num = document.secondForm1.secondColor1.selectedIndex;
@@ -412,7 +408,6 @@
             obj.style.backgroundColor = color[colorIndex];
             second_input_ans[0] = colorIndex
         }
-
         function secondEnterColor2(idname) { //入力した色をセル(second)に反映(左上)
             var obj = document.getElementById(idname);
             const num = document.secondForm2.secondColor2.selectedIndex;
@@ -420,7 +415,6 @@
             obj.style.backgroundColor = color[colorIndex];
             second_input_ans[1] = colorIndex
         }
-
         function secondEnterColor3(idname) { //入力した色をセル(second)に反映(左上)
             var obj = document.getElementById(idname);
             const num = document.secondForm3.secondColor3.selectedIndex;
@@ -428,7 +422,6 @@
             obj.style.backgroundColor = color[colorIndex];
             second_input_ans[2] = colorIndex
         }
-
         function secondEnterColor4(idname) { //入力した色をセル(second)に反映(左上)
             var obj = document.getElementById(idname);
             const num = document.secondForm4.secondColor4.selectedIndex;
@@ -521,11 +514,6 @@
             var hit = 0;
             var blow = 0;
 
-            console.log("保存された答え");
-            for (let i = 0; i < 4; i++) {
-                console.log(ans[i]);
-            }
-
             for (let i = 0; i < 4; i++) { //hit, blowを求める処理
                 for (let j = 0; j < 4; j++) {
                     if (ans[i] == input_ans[j]) {
@@ -539,13 +527,9 @@
                 }
             }
 
-            console.log("hit");
-            console.log(hit);
-            console.log("blow");
-            console.log(blow);
+            console.log("hit: " + hit);
+            console.log("blow" + blow);
         }
-
-        console.log("hello")
 
         setTimeout(() => { //10秒後からオブジェクトの更新の監視を開始
             var roomName = $("#roomName").val(); //ルーム名を取得
@@ -569,8 +553,6 @@
                 console.log("相手のコール: " + friendCallColor);
                 console.log("\n");
             });
-
-
         }, 10000);
 
     </script>
