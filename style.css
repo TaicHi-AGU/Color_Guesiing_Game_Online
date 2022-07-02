@@ -4,9 +4,28 @@ body {
     font-family: "Comic Sans MS";
 }
 
+header {
+    display: flex;
+    width: 1000px;
+    height: 50px;
+    margin: 20px 0px 0px 15px;
+    background-color: rgb(100, 100, 100);
+    align-items: center;
+    border-radius: 10px;
+}
+
+.title {
+    margin-right: auto;
+    margin: 0px 0px 0px 10px;
+}
+
 .line {
     display: flex;
     /* align-items: center; */
+}
+
+.formArea {
+    padding: 0px 0px 20px 0px;
 }
 
 .VStack {
@@ -21,7 +40,7 @@ body {
     height: 100px;
     padding: 20px;
     border: 5px solid;
-    border-color:rgb(150, 150, 150);
+    border-color: rgb(150, 150, 150);
     border-radius: 10px;
 }
 
@@ -33,7 +52,7 @@ body {
     height: 60px;
     padding: 20px;
     border: 5px solid;
-    border-color:rgb(150, 150, 150);
+    border-color: rgb(150, 150, 150);
     border-radius: 10px;
 }
 
@@ -44,7 +63,7 @@ body {
     padding: 0px 0px 0px 0px;
     border-radius: 10px;
     border: 5px solid;
-    border-color:rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
 }
 
 .secondOutsideBox {
@@ -54,7 +73,7 @@ body {
     padding: 0px 0px 0px 0px;
     border-radius: 10px;
     border: 5px solid;
-    border-color:rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
 }
 
 .entireView {
@@ -97,7 +116,7 @@ body {
     border-radius: 10px;
     border-radius: 10px;
     border: 5px solid;
-    border-color:rgb(240, 240, 240);
+    border-color: rgb(240, 240, 240);
     padding: 0px 0px 0px 0px;
 }
 
@@ -109,7 +128,7 @@ body {
     height: 10px;
     padding: 20px;
     border: 5px solid;
-    border-color:rgb(150, 150, 150);
+    border-color: rgb(150, 150, 150);
     border-radius: 100px;
 }
 
@@ -179,6 +198,7 @@ body {
     color: black;
     font-size: 130%;
 }
+
 /* colorList プルダウンメニューの色ここまで */
 
 /* secondColorList1 プルダウンメニューの色 */
@@ -247,6 +267,7 @@ body {
     color: black;
     font-size: 130%;
 }
+
 /* secondColorList1 プルダウンメニューの色ここまで */
 
 /* secondColorList2 プルダウンメニューの色 */
@@ -315,6 +336,7 @@ body {
     color: black;
     font-size: 130%;
 }
+
 /* secondColorList2 プルダウンメニューの色ここまで */
 
 /* secondColorList3 プルダウンメニューの色 */
@@ -383,6 +405,7 @@ body {
     color: black;
     font-size: 130%;
 }
+
 /* secondColorList3 プルダウンメニューの色ここまで */
 
 /* secondColorList4 プルダウンメニューの色 */
@@ -451,4 +474,5 @@ body {
     color: black;
     font-size: 130%;
 }
+
 /* secondColorList4 プルダウンメニューの色ここまで */
