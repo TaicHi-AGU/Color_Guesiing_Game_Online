@@ -9,29 +9,32 @@
 
 <body text="entireView" class="entireView">
 
+    <header>
+        <h1 class="title">Color Game</h1>
+      </header>
+
 
     <div class="line">
         <div class="VStack">
-            <h1>Color Game</h1>
             <p align="center"></p>
             <p></p>
+            <div class="formArea">
+                <div class="line">
+                    Room Name : <input type="text" id="roomName" size="10">
+                    <form name="playerNum" align="center">
+                        <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
+                            id="playerNum">
+                            <OPTION SELECTED>Player</OPTION>
+                            <OPTION value=1>1</OPTION>
+                            <OPTION value=2>2</OPTION>
+                        </SELECT>
+                    </form>
+                    <button id="roomNameEnter">Enter</button>
+                </div>
 
-            <div class="line">
-                Room Name : <input type="text" id="roomName" size="10">
-                <form name="playerNum" align="center">
-                    <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white" id="playerNum">
-                        <OPTION SELECTED>Player</OPTION>
-                        <OPTION value=1>1</OPTION>
-                        <OPTION value=2>2</OPTION>
-                    </SELECT>
-                </form>
-                <button id="roomNameEnter">Enter</button>
-            </div>
-
-
-
-            <div>
-                Your Name : <input type="text" id="playerName"> <button id="playerNameEnter">Enter</button>
+                <div>
+                    Your Name : <input type="text" id="playerName"> <button id="playerNameEnter">Enter</button>
+                </div>
             </div>
 
             <div class="outsideBox">
@@ -339,37 +342,50 @@
             roomName = $("#roomName").val(); //ルーム名入力
             playerNum = $("#playerNum").val() //プレイヤー番号取得
 
-            update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
-                RoomName: roomName,
-                whichTurn: 0,
-            });
-
-            //以下オブジェクトの初期化: 使う要素を全て書き出す
-
-            if (playerNum == "1") {
-                update(ref(db, roomName + '/player1'), {
-                    Name: "",
-                    isAnswerSet: false,
-                    AnswerColor: [],
-                    P1CallColor: []
+            if (roomName != "" && playerNum != "Player") {
+                update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
+                    RoomName: roomName,
+                    whichTurn: 0,
                 });
-            }
 
-            if (playerNum == "2") {
-                update(ref(db, roomName + '/player2'), {
-                    Name: "",
-                    isAnswerSet: false,
-                    AnswerColor: [],
-                    P2CallColor: []
-                });
-            }
+                //以下オブジェクトの初期化: 使う要素を全て書き出す
 
-            isRoomCreated = true;
-            document.getElementById("roomNameEnter").disabled = true;
-            document.getElementById("roomName").disabled = true;
-            document.getElementById("playerNum").disabled = true;
-            document.getElementById("playerName").disabled = false;
-            document.getElementById("playerNameEnter").disabled = false;
+                if (playerNum == "1") {
+                    update(ref(db, roomName + '/player1'), {
+                        Name: "",
+                        isAnswerSet: false,
+                        AnswerColor: [],
+                        CallColor: []
+                    });
+                }
+
+                if (playerNum == "2") {
+                    update(ref(db, roomName + '/player2'), {
+                        Name: "",
+                        isAnswerSet: false,
+                        AnswerColor: [],
+                        CallColor: []
+                    });
+                }
+
+                isRoomCreated = true;
+                document.getElementById("roomNameEnter").disabled = true;
+                document.getElementById("roomName").disabled = true;
+                document.getElementById("playerNum").disabled = true;
+                document.getElementById("playerName").disabled = false;
+                document.getElementById("playerNameEnter").disabled = false;
+            }
+            else {
+                if (roomName == "" && playerNum == "Player") {
+                    alert("ルーム名を記入してください。\nプレイヤー番号を選択してください。");
+                }
+                else if (roomName == "") {
+                    alert("ルーム名を記入してください。");
+                }
+                else {
+                    alert("プレイヤー番号を選択してください。");
+                }
+            }
         });
 
         setTimeout(() => { //10秒間RoomNameがEnterされなかったらアラート/リロード
@@ -381,26 +397,27 @@
 
         }, 10000);
 
-
         $("#playerNameEnter").on("click", function () { //プレイヤー名をデータベースに登録
             const playerName = $("#playerName").val() //プレイヤー名取得
             const playerNum = $("#playerNum").val() //プレイヤー番号取得
             var roomName = $("#roomName").val(); //ルーム名取得
 
-            if (playerNum == "1") {
-                update(ref(db, roomName + '/player1'), {
-                    Name: playerName,
-                });
-            }
+            if (playerName != "") {
+                if (playerNum == "1") {
+                    update(ref(db, roomName + '/player1'), {
+                        Name: playerName,
+                    });
+                }
 
-            if (playerNum == "2") {
-                update(ref(db, roomName + '/player2'), {
-                    Name: playerName,
-                });
-            }
+                if (playerNum == "2") {
+                    update(ref(db, roomName + '/player2'), {
+                        Name: playerName,
+                    });
+                }
 
-            document.getElementById("playerName").disabled = true;
-            document.getElementById("playerNameEnter").disabled = true;
+                document.getElementById("playerName").disabled = true;
+                document.getElementById("playerNameEnter").disabled = true;
+            }
         });
 
         var color = ['#ff7f7f', '#ffbf7f', '#ffff7f', '#bfff7f', '#7fffbf', '#7fffff', '#7fbfff', '#bf7fff', '#ff7fff', '#f5f5f5'];
@@ -467,6 +484,28 @@
             second_input_ans[3] = colorIndex
         }
 
+        function isInputCorrect(input_ans) {
+            function existSame(input) {
+                const setinput = new Set(input);
+                return setinput.size !== input.length;
+            }
+
+            for (let i = 0; i < 4; i++) {
+                if (input_ans[i] == undefined) {
+                    console.log("return 3");
+                    return 3;
+                }
+            }
+
+            if (existSame(input_ans) == true) {
+                console.log("return 2");
+                return 2;
+            }
+
+            console.log("return 1");
+            return 1;
+        }
+
         window.onload = function () { //入力を感知してenterColor()を実行
             let select1 = document.querySelector('[name="color1"]');
             let select2 = document.querySelector('[name="color2"]');
@@ -508,28 +547,36 @@
             const playerNum = $("#playerNum").val() //プレイヤー番号
             var roomName = $("#roomName").val();
 
-            console.log("設定した答え"); //選択インデックス確認用(コンソール)
-            console.log(second_input_ans);
+            if (isInputCorrect(second_input_ans) == 1) {
+                console.log("設定した答え"); //選択インデックス確認用(コンソール)
+                console.log(second_input_ans);
 
-            if (playerNum == "1") {
-                update(ref(db, roomName + '/player1'), {
-                    AnswerColor: second_input_ans,
-                    isAnswerSet: true,
-                });
-            }
+                if (playerNum == "1") {
+                    update(ref(db, roomName + '/player1'), {
+                        AnswerColor: second_input_ans,
+                        isAnswerSet: true,
+                    });
+                }
 
-            if (playerNum == "2") {
-                update(ref(db, roomName + '/player2'), {
-                    AnswerColor: second_input_ans,
-                    isAnswerSet: true,
-                });
+                if (playerNum == "2") {
+                    update(ref(db, roomName + '/player2'), {
+                        AnswerColor: second_input_ans,
+                        isAnswerSet: true,
+                    });
+                }
+
+                document.getElementById("sendAnswerButton").disabled = true;
+                document.getElementById("secondColorList1").disabled = true;
+                document.getElementById("secondColorList2").disabled = true;
+                document.getElementById("secondColorList3").disabled = true;
+                document.getElementById("secondColorList4").disabled = true;
             }
-            
-            document.getElementById("sendAnswerButton").disabled = true;
-            document.getElementById("secondColorList1").disabled = true;
-            document.getElementById("secondColorList2").disabled = true;
-            document.getElementById("secondColorList3").disabled = true;
-            document.getElementById("secondColorList4").disabled = true;
+            else if (isInputCorrect(second_input_ans) == 2) {
+                alert("色が重複しています。");
+            }
+            else {
+                alert("色が選択されていないマスがあります。");
+            }
         });
 
         $("#callButton").on("click", function () { //コールボタンの処理
@@ -537,34 +584,49 @@
             const playerNum = $("#playerNum").val() //プレイヤー番号取得
             var roomName = $("#roomName").val(); //ルーム名取得
 
-            console.log("CALLする色のインデックス"); //確認用(コンソール)
-            console.log(input_ans + "\n\n");
+            if (isInputCorrect(input_ans) == 1) {
+                console.log("CALLする色のインデックス"); //確認用(コンソール)
+                console.log(input_ans + "\n\n");
 
-            judge_result(input_ans, ans); //Hit, Blowを算出
+                judge_result(input_ans, ans); //Hit, Blowを算出
 
-            if (playerNum == "1") { //データベースにCall内容を送信
-                update(ref(db, roomName), {
-                    whichTurn: 2,
-                });
-                update(ref(db, roomName + '/player1'), {
-                    P1CallColor: input_ans,
-                });
+                if (playerNum == "1") { //データベースにCall内容を送信
+                    update(ref(db, roomName), {
+                        whichTurn: 2,
+                    });
+                    update(ref(db, roomName + '/player1'), {
+                        CallColor: input_ans,
+                        hit: hit,
+                        blow: blow,
+                    });
+                }
+
+                if (playerNum == "2") { //データベースにCall内容を送信
+                    update(ref(db, roomName), {
+                        whichTurn: 1,
+                    });
+                    update(ref(db, roomName + '/player2'), {
+                        CallColor: input_ans,
+                        hit: hit,
+                        blow: blow,
+                    });
+                }
+
+                document.getElementById("sendAnswerButton").disabled = true;
             }
-
-            if (playerNum == "2") { //データベースにCall内容を送信
-                update(ref(db, roomName), {
-                    whichTurn: 1,
-                });
-                update(ref(db, roomName + '/player2'), {
-                    P2CallColor: input_ans,
-                });
+            else if (isInputCorrect(input_ans) == 2) {
+                alert("色が重複しています。");
             }
-
-            document.getElementById("sendAnswerButton").disabled = true;
+            else {
+                alert("色が選択されていないマスがあります。");
+            }
         });
 
         var hit = 0;
         var blow = 0;
+
+        var friendHit;
+        var friendBlow;
 
         function judge_result(input_ans, ans) { //hit, blowを計算
             hit = 0;
@@ -602,12 +664,16 @@
                 if (playerNum == "1") {
                     friendName = snapshot.val().player2.Name;
                     ans = snapshot.val().player2.AnswerColor;
-                    friendCallColor = snapshot.val().player2.P2CallColor;
+                    friendCallColor = snapshot.val().player2.CallColor;
+                    friendHit = snapshot.val().player2.hit;
+                    friendBlow = snapshot.val().player2.blow;
                 }
                 if (playerNum == "2") {
                     friendName = snapshot.val().player1.Name;
                     ans = snapshot.val().player1.AnswerColor;
-                    friendCallColor = snapshot.val().player1.P1CallColor;
+                    friendCallColor = snapshot.val().player1.CallColor;
+                    friendHit = snapshot.val().player1.hit;
+                    friendBlow = snapshot.val().player1.blow;
                 }
 
                 isAnswerSet1 = snapshot.val().player1.isAnswerSet;
@@ -650,6 +716,9 @@
                 console.log("答え: " + ans);
                 console.log("相手のコール: " + friendCallColor);
                 console.log("\n");
+                console.log("相手のHit: " + friendHit);
+                console.log("相手のBlow: " + friendBlow);
+                
             });
         }, 10000);
 
