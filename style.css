@@ -7,7 +7,7 @@ body {
 header {
     display: flex;
     width: 1000px;
-    height: 50px;
+    height: 20px;
     margin: 20px 0px 0px 15px;
     background-color: rgb(100, 100, 100);
     align-items: center;
@@ -21,11 +21,62 @@ header {
 
 .line {
     display: flex;
-    /* align-items: center; */
 }
 
 .formArea {
     padding: 0px 0px 20px 0px;
+}
+
+.formLine {
+    display: flex;
+    margin: 0px 0px 5px 0px;
+}
+
+.formText {
+    width: 100px;
+    text-align: right;
+    margin: 0px 10px 0px 0px;
+}
+
+.playerNum {
+    text-align: center;
+    height: 26px;
+    margin: 0px 5px 0px 5px;
+}
+
+.playerName {
+    height: 20px;
+    margin: 0px 3px 0px 0px;
+}
+
+.playerNameEnter {
+    height: 25px;
+}
+
+.myName {
+    margin: 0px 0px 25px 0px;
+    font-size: 25px;
+    text-align: center;
+    width: 330px;
+    height: 40px;
+    border-radius: 10px;
+    color: Black;
+    background-color: rgb(230, 230, 230);
+    border: 5px solid;
+    border-color: rgb(240, 240, 240);
+}
+
+.friendName {
+    margin: 82px 0px 25px 0px;
+    font-size: 25px;
+    text-align: center;
+    width: 330px;
+    height: 40px;
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(230, 230, 230);
+    border: 5px solid;
+    border-color: rgb(240, 240, 240);
 }
 
 .VStack {
@@ -42,6 +93,7 @@ header {
     border: 5px solid;
     border-color: rgb(150, 150, 150);
     border-radius: 10px;
+    background: rgb(230, 230, 230);
 }
 
 .secondBox {
@@ -54,6 +106,20 @@ header {
     border: 5px solid;
     border-color: rgb(150, 150, 150);
     border-radius: 10px;
+    background: rgb(230, 230, 230);
+}
+
+.thirdBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    border: 5px solid;
+    border-color: rgb(150, 150, 150);
+    border-radius: 10px;
+    background: rgb(230, 230, 230);
 }
 
 .outsideBox {
@@ -71,6 +137,18 @@ header {
     width: 250px;
     height: 250px;
     padding: 0px 0px 0px 0px;
+    border-radius: 10px;
+    border: 5px solid;
+    border-color: rgb(240, 240, 240);
+    margin: 197px 0px 0px 0px;
+}
+
+.thirdOutsideBox {
+    background: rgb(230, 230, 230);
+    width: 330px;
+    height: 330px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     border-radius: 10px;
     border: 5px solid;
     border-color: rgb(240, 240, 240);
@@ -108,6 +186,14 @@ header {
     margin: 20px;
 }
 
+.sendButton {
+    padding: 0px 0px 0px 90px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 19px;
+}
+
 .outsideResultBox {
     color: black;
     background: rgb(230, 230, 230);
@@ -120,6 +206,19 @@ header {
     padding: 0px 0px 0px 0px;
 }
 
+.thirdOutsideResultBox {
+    color: black;
+    background: rgb(230, 230, 230);
+    width: 330px;
+    height: 150px;
+    border-radius: 10px;
+    border-radius: 10px;
+    border: 5px solid;
+    border-color: rgb(240, 240, 240);
+    padding: 0px 0px 0px 0px;
+    margin: 65px 0px 0px 0px;
+}
+
 .resultBox {
     display: flex;
     justify-content: center;
@@ -128,6 +227,7 @@ header {
     height: 10px;
     padding: 20px;
     border: 5px solid;
+    background: #3f3f3f;
     border-color: rgb(150, 150, 150);
     border-radius: 100px;
 }
