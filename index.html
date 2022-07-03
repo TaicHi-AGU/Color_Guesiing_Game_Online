@@ -5,23 +5,21 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Guess_the_color_scheme</title>
+    <button id="deleteRoomButton">退出/ルーム削除</button>
 </head>
 
 <body text="entireView" class="entireView">
 
     <header>
-        <h1 class="title">Color Game</h1>
-      </header>
-
+        <h1 class="title">TITLE</h1>
+    </header>
 
     <div class="line">
         <div class="VStack">
-            <p align="center"></p>
-            <p></p>
             <div class="formArea">
-                <div class="line">
-                    Room Name : <input type="text" id="roomName" size="10">
-                    <form name="playerNum" align="center">
+                <div class="formLine">
+                    <div class="formText">Room Name : </div><input type="text" id="roomName" size="10">
+                    <form name="playerNum" align="center" class="playerNum">
                         <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
                             id="playerNum">
                             <OPTION SELECTED>Player</OPTION>
@@ -31,114 +29,100 @@
                     </form>
                     <button id="roomNameEnter">Enter</button>
                 </div>
-
-                <div>
-                    Your Name : <input type="text" id="playerName"> <button id="playerNameEnter">Enter</button>
+                <div class="formLine">
+                    <div class="formText">Your Name : </div><input type="text" id="playerName" class="playerName">
+                    <button id="playerNameEnter" class="playerNameEnter">Enter</button>
                 </div>
             </div>
+            <div id="myName" class="myName">&nbsp;</div>
 
             <div class="outsideBox">
-
                 <div class="line">
                     <div class="space">
                         <div id="box1-Id" class="box box1">
-                            <div class="flexbox">
-                                <!-- box1 -->
-                                <form name="form1" align="center">
-                                    <SELECT NAME="color1" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>0.Red</OPTION>
-                                        <OPTION value=1>1.Orange</OPTION>
-                                        <OPTION value=2>2.Yellow</OPTION>
-                                        <OPTION value=3>3.Yellowgreen</OPTION>
-                                        <OPTION value=4>4.Green</OPTION>
-                                        <OPTION value=5>5.Skyblue</OPTION>
-                                        <OPTION value=6>6.Blue</OPTION>
-                                        <OPTION value=7>7.Purple</OPTION>
-                                        <OPTION value=8>8.Pink</OPTION>
-                                        <OPTION value=9>9.White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="form1" align="center">
+                                <SELECT NAME="color1" style="font-size:10pt;color:black;background-color:white"
+                                    id="colorList">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>0.Red</OPTION>
+                                    <OPTION value=1>1.Orange</OPTION>
+                                    <OPTION value=2>2.Yellow</OPTION>
+                                    <OPTION value=3>3.Yellowgreen</OPTION>
+                                    <OPTION value=4>4.Green</OPTION>
+                                    <OPTION value=5>5.Skyblue</OPTION>
+                                    <OPTION value=6>6.Blue</OPTION>
+                                    <OPTION value=7>7.Purple</OPTION>
+                                    <OPTION value=8>8.Pink</OPTION>
+                                    <OPTION value=9>9.White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                     <div class="space">
                         <div id="box2-Id" class="box box2">
-                            <div class="flexbox">
-                                <!-- box2 -->
-                                <form name="form2" align="center">
-                                    <SELECT NAME="color2" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>0.Red</OPTION>
-                                        <OPTION value=1>1.Orange</OPTION>
-                                        <OPTION value=2>2.Yellow</OPTION>
-                                        <OPTION value=3>3.Yellowgreen</OPTION>
-                                        <OPTION value=4>4.Green</OPTION>
-                                        <OPTION value=5>5.Skyblue</OPTION>
-                                        <OPTION value=6>6.Blue</OPTION>
-                                        <OPTION value=7>7.Purple</OPTION>
-                                        <OPTION value=8>8.Pink</OPTION>
-                                        <OPTION value=9>9.White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="form2" align="center">
+                                <SELECT NAME="color2" style="font-size:10pt;color:black;background-color:white"
+                                    id="colorList">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>0.Red</OPTION>
+                                    <OPTION value=1>1.Orange</OPTION>
+                                    <OPTION value=2>2.Yellow</OPTION>
+                                    <OPTION value=3>3.Yellowgreen</OPTION>
+                                    <OPTION value=4>4.Green</OPTION>
+                                    <OPTION value=5>5.Skyblue</OPTION>
+                                    <OPTION value=6>6.Blue</OPTION>
+                                    <OPTION value=7>7.Purple</OPTION>
+                                    <OPTION value=8>8.Pink</OPTION>
+                                    <OPTION value=9>9.White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="line">
                     <div class="space">
                         <div id="box3-Id" class="box box3">
-                            <div class="flexbox">
-                                <!-- box3 -->
-                                <form name="form3" align="center">
-                                    <SELECT NAME="color3" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>0.Red</OPTION>
-                                        <OPTION value=1>1.Orange</OPTION>
-                                        <OPTION value=2>2.Yellow</OPTION>
-                                        <OPTION value=3>3.Yellowgreen</OPTION>
-                                        <OPTION value=4>4.Green</OPTION>
-                                        <OPTION value=5>5.Skyblue</OPTION>
-                                        <OPTION value=6>6.Blue</OPTION>
-                                        <OPTION value=7>7.Purple</OPTION>
-                                        <OPTION value=8>8.Pink</OPTION>
-                                        <OPTION value=9>9.White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="form3" align="center">
+                                <SELECT NAME="color3" style="font-size:10pt;color:black;background-color:white"
+                                    id="colorList">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>0.Red</OPTION>
+                                    <OPTION value=1>1.Orange</OPTION>
+                                    <OPTION value=2>2.Yellow</OPTION>
+                                    <OPTION value=3>3.Yellowgreen</OPTION>
+                                    <OPTION value=4>4.Green</OPTION>
+                                    <OPTION value=5>5.Skyblue</OPTION>
+                                    <OPTION value=6>6.Blue</OPTION>
+                                    <OPTION value=7>7.Purple</OPTION>
+                                    <OPTION value=8>8.Pink</OPTION>
+                                    <OPTION value=9>9.White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                     <div class="space">
                         <div id="box4-Id" class="box box4">
-                            <div class="flexbox">
-                                <form name="form4" align="center">
-                                    <SELECT NAME="color4" style="font-size:10pt;color:black;background-color:white"
-                                        id="colorList">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>0.Red</OPTION>
-                                        <OPTION value=1>1.Orange</OPTION>
-                                        <OPTION value=2>2.Yellow</OPTION>
-                                        <OPTION value=3>3.Yellowgreen</OPTION>
-                                        <OPTION value=4>4.Green</OPTION>
-                                        <OPTION value=5>5.Skyblue</OPTION>
-                                        <OPTION value=6>6.Blue</OPTION>
-                                        <OPTION value=7>7.Purple</OPTION>
-                                        <OPTION value=8>8.Pink</OPTION>
-                                        <OPTION value=9>9.White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="form4" align="center">
+                                <SELECT NAME="color4" style="font-size:10pt;color:black;background-color:white"
+                                    id="colorList">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>0.Red</OPTION>
+                                    <OPTION value=1>1.Orange</OPTION>
+                                    <OPTION value=2>2.Yellow</OPTION>
+                                    <OPTION value=3>3.Yellowgreen</OPTION>
+                                    <OPTION value=4>4.Green</OPTION>
+                                    <OPTION value=5>5.Skyblue</OPTION>
+                                    <OPTION value=6>6.Blue</OPTION>
+                                    <OPTION value=7>7.Purple</OPTION>
+                                    <OPTION value=8>8.Pink</OPTION>
+                                    <OPTION value=9>9.White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
             <div id="callButton-Id" class="callButton call">
                 <button id="callButton">コール</button>
@@ -146,38 +130,34 @@
 
             <div class="outsideResultBox">
                 <div class="line">
-                    <div class="label">
-                        H
+                    <div class="label">H</div>
+                    <div class="space">
+                        <div id="hit1-Id" class="resultBox hit1"></div>
                     </div>
                     <div class="space">
-                        <div id="hit1-Id" class="resultBox hit1">H1</div>
+                        <div id="hit2-Id" class="resultBox hit2"></div>
                     </div>
                     <div class="space">
-                        <div id="hit2-Id" class="resultBox hit2">H2</div>
+                        <div id="hit3-Id" class="resultBox hit3"></div>
                     </div>
                     <div class="space">
-                        <div id="hit3-Id" class="resultBox hit3">H3</div>
-                    </div>
-                    <div class="space">
-                        <div id="hit4-Id" class="resultBox hit4">H4</div>
+                        <div id="hit4-Id" class="resultBox hit4"></div>
                     </div>
                 </div>
 
                 <div class="line">
-                    <div class="label">
-                        B
+                    <div class="label">B</div>
+                    <div class="space">
+                        <div id="blow1-Id" class="resultBox blow1"></div>
                     </div>
                     <div class="space">
-                        <div id="blow1-Id" class="resultBox blow1">B1</div>
+                        <div id="blow2-Id" class="resultBox blow2"></div>
                     </div>
                     <div class="space">
-                        <div id="blow2-Id" class="resultBox blow2">B2</div>
+                        <div id="blow3-Id" class="resultBox blow3"></div>
                     </div>
                     <div class="space">
-                        <div id="blow3-Id" class="resultBox blow3">B3</div>
-                    </div>
-                    <div class="space">
-                        <div id="blow4-Id" class="resultBox blow4">B4</div>
+                        <div id="blow4-Id" class="resultBox blow4"></div>
                     </div>
                 </div>
             </div>
@@ -190,48 +170,42 @@
                 <div class="line">
                     <div class="space">
                         <div id="secondBox1-Id" class="secondBox secondBox1">
-                            <div class="flexbox">
-                                <!-- box1 -->
-                                <form name="secondForm1" salign="center">
-                                    <SELECT NAME="secondColor1"
-                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList1">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>Red</OPTION>
-                                        <OPTION value=1>Orange</OPTION>
-                                        <OPTION value=2>Yellow</OPTION>
-                                        <OPTION value=3>Yellowgreen</OPTION>
-                                        <OPTION value=4>Green</OPTION>
-                                        <OPTION value=5>Skyblue</OPTION>
-                                        <OPTION value=6>Blue</OPTION>
-                                        <OPTION value=7>Purple</OPTION>
-                                        <OPTION value=8>Pink</OPTION>
-                                        <OPTION value=9>White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="secondForm1" salign="center">
+                                <SELECT NAME="secondColor1" style="font-size:10pt;color:black;background-color:white"
+                                    id="secondColorList1">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>Red</OPTION>
+                                    <OPTION value=1>Orange</OPTION>
+                                    <OPTION value=2>Yellow</OPTION>
+                                    <OPTION value=3>Yellowgreen</OPTION>
+                                    <OPTION value=4>Green</OPTION>
+                                    <OPTION value=5>Skyblue</OPTION>
+                                    <OPTION value=6>Blue</OPTION>
+                                    <OPTION value=7>Purple</OPTION>
+                                    <OPTION value=8>Pink</OPTION>
+                                    <OPTION value=9>White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                     <div class="space">
                         <div id="secondBox2-Id" class="secondBox secondBox2">
-                            <div class="flexbox">
-                                <!-- box2 -->
-                                <form name="secondForm2" align="center">
-                                    <SELECT NAME="secondColor2"
-                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList2">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>Red</OPTION>
-                                        <OPTION value=1>Orange</OPTION>
-                                        <OPTION value=2>Yellow</OPTION>
-                                        <OPTION value=3>Yellowgreen</OPTION>
-                                        <OPTION value=4>Green</OPTION>
-                                        <OPTION value=5>Skyblue</OPTION>
-                                        <OPTION value=6>Blue</OPTION>
-                                        <OPTION value=7>Purple</OPTION>
-                                        <OPTION value=8>Pink</OPTION>
-                                        <OPTION value=9>White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="secondForm2" align="center">
+                                <SELECT NAME="secondColor2" style="font-size:10pt;color:black;background-color:white"
+                                    id="secondColorList2">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>Red</OPTION>
+                                    <OPTION value=1>Orange</OPTION>
+                                    <OPTION value=2>Yellow</OPTION>
+                                    <OPTION value=3>Yellowgreen</OPTION>
+                                    <OPTION value=4>Green</OPTION>
+                                    <OPTION value=5>Skyblue</OPTION>
+                                    <OPTION value=6>Blue</OPTION>
+                                    <OPTION value=7>Purple</OPTION>
+                                    <OPTION value=8>Pink</OPTION>
+                                    <OPTION value=9>White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -240,47 +214,42 @@
                 <div class="line">
                     <div class="space">
                         <div id="secondBox3-Id" class="secondBox secondBox3">
-                            <div class="flexbox">
-                                <!-- box3 -->
-                                <form name="secondForm3" align="center">
-                                    <SELECT NAME="secondColor3"
-                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList3">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>Red</OPTION>
-                                        <OPTION value=1>Orange</OPTION>
-                                        <OPTION value=2>Yellow</OPTION>
-                                        <OPTION value=3>Yellowgreen</OPTION>
-                                        <OPTION value=4>Green</OPTION>
-                                        <OPTION value=5>Skyblue</OPTION>
-                                        <OPTION value=6>Blue</OPTION>
-                                        <OPTION value=7>Purple</OPTION>
-                                        <OPTION value=8>Pink</OPTION>
-                                        <OPTION value=9>White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="secondForm3" align="center">
+                                <SELECT NAME="secondColor3" style="font-size:10pt;color:black;background-color:white"
+                                    id="secondColorList3">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>Red</OPTION>
+                                    <OPTION value=1>Orange</OPTION>
+                                    <OPTION value=2>Yellow</OPTION>
+                                    <OPTION value=3>Yellowgreen</OPTION>
+                                    <OPTION value=4>Green</OPTION>
+                                    <OPTION value=5>Skyblue</OPTION>
+                                    <OPTION value=6>Blue</OPTION>
+                                    <OPTION value=7>Purple</OPTION>
+                                    <OPTION value=8>Pink</OPTION>
+                                    <OPTION value=9>White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                     <div class="space">
                         <div id="secondBox4-Id" class="secondBox secondBox4">
-                            <div class="flexbox">
-                                <form name="secondForm4" align="center">
-                                    <SELECT NAME="secondColor4"
-                                        style="font-size:10pt;color:black;background-color:white" id="secondColorList4">
-                                        <OPTION SELECTED>色を選択</OPTION>
-                                        <OPTION value=0>Red</OPTION>
-                                        <OPTION value=1>Orange</OPTION>
-                                        <OPTION value=2>Yellow</OPTION>
-                                        <OPTION value=3>Yellowgreen</OPTION>
-                                        <OPTION value=4>Green</OPTION>
-                                        <OPTION value=5>Skyblue</OPTION>
-                                        <OPTION value=6>Blue</OPTION>
-                                        <OPTION value=7>Purple</OPTION>
-                                        <OPTION value=8>Pink</OPTION>
-                                        <OPTION value=9>White</OPTION>
-                                    </SELECT>
-                                </form>
-                            </div>
+                            <form name="secondForm4" align="center">
+                                <SELECT NAME="secondColor4" style="font-size:10pt;color:black;background-color:white"
+                                    id="secondColorList4">
+                                    <OPTION SELECTED>色を選択</OPTION>
+                                    <OPTION value=0>Red</OPTION>
+                                    <OPTION value=1>Orange</OPTION>
+                                    <OPTION value=2>Yellow</OPTION>
+                                    <OPTION value=3>Yellowgreen</OPTION>
+                                    <OPTION value=4>Green</OPTION>
+                                    <OPTION value=5>Skyblue</OPTION>
+                                    <OPTION value=6>Blue</OPTION>
+                                    <OPTION value=7>Purple</OPTION>
+                                    <OPTION value=8>Pink</OPTION>
+                                    <OPTION value=9>White</OPTION>
+                                </SELECT>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -288,8 +257,66 @@
 
 
 
-            <div id="callButton-Id" class="callButton call">
+            <div id="sendButton-Id" class="sendButton call">
                 <button id="sendAnswerButton">送信</button>
+            </div>
+        </div>
+
+        <div class="VStack">
+            <p align="center"></p>
+            <div id="friendName" class="friendName">&nbsp;</div>
+            <div class="thirdOutsideBox">
+
+                <div class="line">
+                    <div class="space">
+                        <div id="thirdBox1-Id" class="thirdBox thirdBox1"></div>
+                    </div>
+                    <div class="space">
+                        <div id="thirdBox2-Id" class="thirdBox thirdBox2"></div>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="space">
+                        <div id="thirdBox3-Id" class="thirdBox thirdBox3"></div>
+                    </div>
+                    <div class="space">
+                        <div id="thirdBox4-Id" class="thirdBox thirdBox4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thirdOutsideResultBox">
+                <div class="line">
+                    <div class="label">H</div>
+                    <div class="space">
+                        <div id="friendHit1-Id" class="resultBox friendHit1"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendHit2-Id" class="resultBox friendHit2"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendHit3-Id" class="resultBox friendHit3"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendHit4-Id" class="resultBox friendHit4"></div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="label">B</div>
+                    <div class="space">
+                        <div id="friendBlow1-Id" class="resultBox friendBlow1"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendBlow2-Id" class="resultBox friendBlow2"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendBlow3-Id" class="resultBox friendBlow3"></div>
+                    </div>
+                    <div class="space">
+                        <div id="friendBlow4-Id" class="resultBox friendBlow4"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -311,34 +338,24 @@
             measurementId: "G-WZ3Z7NTFZN"
         };
 
-        console.log("Hello");
-
         const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app); //RealtimeDBに接続
+        const db = getDatabase(app); //Realtime Database に接続
 
-        var roomName;
-        var playerName;
-        var friendName;
-        var playerNum;
-        var isRoomCreated = false; //ルームが作成されたかを確認
-        var isAnswerSet = false;
-        var isTransitionToCall = false;
-        var whichTurn = 0;
+        var color = ['#ff7f7f', '#ffbf7f', '#ffff7f', '#bfff7f', '#7fffbf', '#7fffff', '#7fbfff', '#bf7fff', '#ff7fff', '#f5f5f5'];
 
-        document.getElementById("roomName").disabled = false;
-        document.getElementById("roomNameEnter").disabled = false;
-        document.getElementById("playerNum").disabled = false;
-        document.getElementById("playerNameEnter").disabled = true;
-        document.getElementById("sendAnswerButton").disabled = false;
-        document.getElementById("callButton").disabled = true;
+        var roomName, playerName, playerNum, friendName;
 
-        document.getElementById("secondColorList1").disabled = false;
-        document.getElementById("secondColorList2").disabled = false;
-        document.getElementById("secondColorList3").disabled = false;
-        document.getElementById("secondColorList4").disabled = false;
+        var whichTurn = 0, hit = 0, blow = 0, friendHit = 0, friendBlow = 0;
 
+        var inputAns = [], secondInputAns = [], ans = [], friendCallColor = []; //入力した解答, 相手に送る正解, 問題の解答, 相手のコール 
 
-        $("#roomNameEnter").on("click", function () { //ルーム作成
+        var isRoomCreated = false, isAnswerSet = false, isTransitionToCall = false; //ルームが作られたか, 答えをセットしたか, 両者とも答えをセットしたか
+
+        //以下処理
+
+        initialSet(); //初期のボタン、フォームの設定
+
+        $("#roomNameEnter").on("click", function () { //ルーム作成ボタン
             roomName = $("#roomName").val(); //ルーム名入力
             playerNum = $("#playerNum").val() //プレイヤー番号取得
 
@@ -397,7 +414,7 @@
 
         }, 10000);
 
-        $("#playerNameEnter").on("click", function () { //プレイヤー名をデータベースに登録
+        $("#playerNameEnter").on("click", function () { //プレイヤー名をデータベースに登録するボタン
             const playerName = $("#playerName").val() //プレイヤー名取得
             const playerNum = $("#playerNum").val() //プレイヤー番号取得
             var roomName = $("#roomName").val(); //ルーム名取得
@@ -415,95 +432,199 @@
                     });
                 }
 
+                document.getElementById("myName").innerText = playerName;
                 document.getElementById("playerName").disabled = true;
                 document.getElementById("playerNameEnter").disabled = true;
+                document.getElementById("sendAnswerButton").disabled = false;
             }
         });
 
-        var color = ['#ff7f7f', '#ffbf7f', '#ffff7f', '#bfff7f', '#7fffbf', '#7fffff', '#7fbfff', '#bf7fff', '#ff7fff', '#f5f5f5'];
+        $("#sendAnswerButton").on("click", function () { //設定した答えを送信するボタン
+            const playerName = $("#playerName").val() //プレイヤー名
+            const playerNum = $("#playerNum").val() //プレイヤー番号
+            var roomName = $("#roomName").val();
 
-        var input_ans = []; //入力した解答を保存(webで入力->データベースに保存)
-        var second_input_ans = [] //相手に送る正解を保存(webで入力->データベースに保存)
-        var ans = []; //問題の解答を保存(データベースから取得)
-        var friendCallColor = []; //相手のコール(データベースから取得)
+            if (isInputCorrect(secondInputAns) == 1) {
+                console.log("設定した答え"); //選択インデックス確認用(コンソール)
+                console.log(secondInputAns);
 
-        function enterColor1(idname) { //入力した色をセルに反映(左上)
-            var obj = document.getElementById(idname);
-            const num = document.form1.color1.selectedIndex;
-            const colorIndex = document.form1.color1.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            input_ans[0] = colorIndex
-        }
-        function enterColor2(idname) { //入力した色をセルに反映(右上)
-            var obj = document.getElementById(idname);
-            const num = document.form2.color2.selectedIndex;
-            const colorIndex = document.form2.color2.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            input_ans[1] = colorIndex
-        }
-        function enterColor3(idname) { //入力した色をセルに反映(左下)
-            var obj = document.getElementById(idname);
-            const num = document.form3.color3.selectedIndex;
-            const colorIndex = document.form3.color3.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            input_ans[2] = colorIndex
-        }
-        function enterColor4(idname) { //入力した色をセルに反映(右下)
-            var obj = document.getElementById(idname);
-            const num = document.form4.color4.selectedIndex;
-            const colorIndex = document.form4.color4.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            input_ans[3] = colorIndex
-        }
-        function secondEnterColor1(idname) { //入力した色をセル(second)に反映(左上)
-            var obj = document.getElementById(idname);
-            const num = document.secondForm1.secondColor1.selectedIndex;
-            const colorIndex = document.secondForm1.secondColor1.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            second_input_ans[0] = colorIndex
-        }
-        function secondEnterColor2(idname) { //入力した色をセル(second)に反映(左上)
-            var obj = document.getElementById(idname);
-            const num = document.secondForm2.secondColor2.selectedIndex;
-            const colorIndex = document.secondForm2.secondColor2.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            second_input_ans[1] = colorIndex
-        }
-        function secondEnterColor3(idname) { //入力した色をセル(second)に反映(左上)
-            var obj = document.getElementById(idname);
-            const num = document.secondForm3.secondColor3.selectedIndex;
-            const colorIndex = document.secondForm3.secondColor3.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            second_input_ans[2] = colorIndex
-        }
-        function secondEnterColor4(idname) { //入力した色をセル(second)に反映(左上)
-            var obj = document.getElementById(idname);
-            const num = document.secondForm4.secondColor4.selectedIndex;
-            const colorIndex = document.secondForm4.secondColor4.options[num].value;
-            obj.style.backgroundColor = color[colorIndex];
-            second_input_ans[3] = colorIndex
-        }
-
-        function isInputCorrect(input_ans) {
-            function existSame(input) {
-                const setinput = new Set(input);
-                return setinput.size !== input.length;
-            }
-
-            for (let i = 0; i < 4; i++) {
-                if (input_ans[i] == undefined) {
-                    console.log("return 3");
-                    return 3;
+                if (playerNum == "1") {
+                    update(ref(db, roomName + '/player1'), {
+                        AnswerColor: secondInputAns,
+                        isAnswerSet: true,
+                    });
                 }
-            }
 
-            if (existSame(input_ans) == true) {
-                console.log("return 2");
-                return 2;
-            }
+                if (playerNum == "2") {
+                    update(ref(db, roomName + '/player2'), {
+                        AnswerColor: secondInputAns,
+                        isAnswerSet: true,
+                    });
+                }
 
-            console.log("return 1");
-            return 1;
+                document.getElementById("sendAnswerButton").disabled = true;
+                document.getElementById("secondColorList1").disabled = true;
+                document.getElementById("secondColorList2").disabled = true;
+                document.getElementById("secondColorList3").disabled = true;
+                document.getElementById("secondColorList4").disabled = true;
+            }
+            else if (isInputCorrect(secondInputAns) == 2) {
+                alert("色が重複しています。");
+            }
+            else {
+                alert("色が選択されていないマスがあります。");
+            }
+        });
+
+        $("#callButton").on("click", function () { //コールボタンの処理
+            const playerName = $("#playerName").val() //プレイヤー名取得
+            const playerNum = $("#playerNum").val() //プレイヤー番号取得
+            var roomName = $("#roomName").val(); //ルーム名取得
+
+            if (isInputCorrect(inputAns) == 1) {
+                console.log("CALLする色のインデックス"); //確認用(コンソール)
+                console.log(inputAns + "\n\n");
+
+                judge_result(inputAns, ans); //Hit, Blowを算出
+
+                showResult(hit, blow); //ResultBoxに結果を反映
+
+                if (playerNum == "1") { //データベースにCall内容を送信
+                    update(ref(db, roomName), {
+                        whichTurn: 2,
+                    });
+                    update(ref(db, roomName + '/player1'), {
+                        CallColor: inputAns,
+                        hit: hit,
+                        blow: blow,
+                    });
+                }
+
+                if (playerNum == "2") { //データベースにCall内容を送信
+                    update(ref(db, roomName), {
+                        whichTurn: 1,
+                    });
+                    update(ref(db, roomName + '/player2'), {
+                        CallColor: inputAns,
+                        hit: hit,
+                        blow: blow,
+                    });
+                }
+
+                document.getElementById("sendAnswerButton").disabled = true;
+            }
+            else if (isInputCorrect(inputAns) == 2) {
+                alert("色が重複しています。");
+            }
+            else {
+                alert("色が選択されていないマスがあります。");
+            }
+        });
+
+        setTimeout(() => { //データベースからデータを受けとり代入, 処理
+            var roomName = $("#roomName").val(); //ルーム名を取得
+
+            const playerInfoRef = ref(db, roomName); //データベースのパスを指定
+
+            onValue(playerInfoRef, (snapshot) => { //オブジェクトに変更があった際にデータを取得
+                var playerNum = $("#playerNum").val();
+                whichTurn = snapshot.val().whichTurn;
+
+                var isAnswerSet1
+                var isAnswerSet2
+
+                //以下データベースからデータ取得
+
+                if (playerNum == "1") {
+                    friendName = snapshot.val().player2.Name;
+                    ans = snapshot.val().player2.AnswerColor;
+                    friendCallColor = snapshot.val().player2.CallColor;
+                    friendHit = snapshot.val().player2.hit;
+                    friendBlow = snapshot.val().player2.blow;
+                }
+                if (playerNum == "2") {
+                    friendName = snapshot.val().player1.Name;
+                    ans = snapshot.val().player1.AnswerColor;
+                    friendCallColor = snapshot.val().player1.CallColor;
+                    friendHit = snapshot.val().player1.hit;
+                    friendBlow = snapshot.val().player1.blow;
+                }
+
+                isAnswerSet1 = snapshot.val().player1.isAnswerSet;
+                isAnswerSet2 = snapshot.val().player2.isAnswerSet;
+
+                console.log("whichTurn: " + whichTurn);
+
+                //以下処理
+
+                console.log("isAnswerSet1: " + isAnswerSet1);
+                console.log("isAnswerSet2: " + isAnswerSet2);
+                console.log("isTransitionToCall: " + isTransitionToCall)
+
+                document.getElementById("friendName").innerText = friendName;
+
+                if (isAnswerSet1 == true && isAnswerSet2 == true && isTransitionToCall == false) { //両者正答を設定したらP1のターンから始める
+                    update(ref(db, roomName), {
+                        whichTurn: 1,
+                    });
+                    isTransitionToCall = true;
+                }
+
+                if (whichTurn == 0) {
+                    document.getElementById("callButton").disabled = true;
+                }
+                else if (whichTurn == playerNum) { //自分のターンのときボタン等有効化
+                    document.getElementById("callButton").disabled = false;
+                    document.getElementById('myName').style.backgroundColor = color[0];
+                    document.getElementById('friendName').style.backgroundColor = 'rgb(230, 230, 230)';
+                }
+                else if (whichTurn != playerNum) { //自分のターンのときボタン等無効化
+                    document.getElementById("callButton").disabled = true;
+                    document.getElementById('friendName').style.backgroundColor = color[0];
+                    document.getElementById('myName').style.backgroundColor = 'rgb(230, 230, 230)';
+                }
+
+                showFriendResult(friendHit, friendBlow);
+                showFriendCallColor(friendCallColor);
+
+                setTimeout(() => { winLoseAlert(hit, friendHit);; }, 1000);
+
+                console.log("対戦相手: " + friendName);
+                console.log("答え: " + ans);
+                console.log("相手のコール: " + friendCallColor);
+                console.log("\n");
+                console.log("自分のHit: " + hit);
+                console.log("相手のHit: " + friendHit);
+                console.log("相手のBlow: " + friendBlow);
+            });
+        }, 10000);
+
+        $("#deleteRoomButton").on("click", function () { //ルームを削除
+            roomName = $("#roomName").val(); //ルーム名入力
+
+            update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
+                RoomName: null,
+                player1: null,
+                player2: null,
+                whichTurn: null,
+            });
+
+            window.location.reload();
+        });
+
+        //以下関数
+
+        function initialSet() {
+            document.getElementById("roomName").disabled = false;
+            document.getElementById("roomNameEnter").disabled = false;
+            document.getElementById("playerNum").disabled = false;
+            document.getElementById("playerNameEnter").disabled = true;
+            document.getElementById("sendAnswerButton").disabled = true;
+            document.getElementById("callButton").disabled = true;
+            document.getElementById("secondColorList1").disabled = false;
+            document.getElementById("secondColorList2").disabled = false;
+            document.getElementById("secondColorList3").disabled = false;
+            document.getElementById("secondColorList4").disabled = false;
         }
 
         window.onload = function () { //入力を感知してenterColor()を実行
@@ -540,101 +661,72 @@
             select8.onchange = event => {
                 secondEnterColor4('secondBox4-Id');
             }
+
+            function enterColor1(idname) { //入力した色をセルに反映(左上)
+                var obj = document.getElementById(idname);
+                const num = document.form1.color1.selectedIndex;
+                const colorIndex = document.form1.color1.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                inputAns[0] = colorIndex
+            }
+            function enterColor2(idname) { //入力した色をセルに反映(右上)
+                var obj = document.getElementById(idname);
+                const num = document.form2.color2.selectedIndex;
+                const colorIndex = document.form2.color2.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                inputAns[1] = colorIndex
+            }
+            function enterColor3(idname) { //入力した色をセルに反映(左下)
+                var obj = document.getElementById(idname);
+                const num = document.form3.color3.selectedIndex;
+                const colorIndex = document.form3.color3.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                inputAns[2] = colorIndex
+            }
+            function enterColor4(idname) { //入力した色をセルに反映(右下)
+                var obj = document.getElementById(idname);
+                const num = document.form4.color4.selectedIndex;
+                const colorIndex = document.form4.color4.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                inputAns[3] = colorIndex
+            }
+            function secondEnterColor1(idname) { //入力した色をセル(second)に反映(左上)
+                var obj = document.getElementById(idname);
+                const num = document.secondForm1.secondColor1.selectedIndex;
+                const colorIndex = document.secondForm1.secondColor1.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                secondInputAns[0] = colorIndex
+            }
+            function secondEnterColor2(idname) { //入力した色をセル(second)に反映(左上)
+                var obj = document.getElementById(idname);
+                const num = document.secondForm2.secondColor2.selectedIndex;
+                const colorIndex = document.secondForm2.secondColor2.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                secondInputAns[1] = colorIndex
+            }
+            function secondEnterColor3(idname) { //入力した色をセル(second)に反映(左上)
+                var obj = document.getElementById(idname);
+                const num = document.secondForm3.secondColor3.selectedIndex;
+                const colorIndex = document.secondForm3.secondColor3.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                secondInputAns[2] = colorIndex
+            }
+            function secondEnterColor4(idname) { //入力した色をセル(second)に反映(左上)
+                var obj = document.getElementById(idname);
+                const num = document.secondForm4.secondColor4.selectedIndex;
+                const colorIndex = document.secondForm4.secondColor4.options[num].value;
+                obj.style.backgroundColor = color[colorIndex];
+                secondInputAns[3] = colorIndex
+            }
         };
 
-        $("#sendAnswerButton").on("click", function () { //設定した答えを送信
-            const playerName = $("#playerName").val() //プレイヤー名
-            const playerNum = $("#playerNum").val() //プレイヤー番号
-            var roomName = $("#roomName").val();
-
-            if (isInputCorrect(second_input_ans) == 1) {
-                console.log("設定した答え"); //選択インデックス確認用(コンソール)
-                console.log(second_input_ans);
-
-                if (playerNum == "1") {
-                    update(ref(db, roomName + '/player1'), {
-                        AnswerColor: second_input_ans,
-                        isAnswerSet: true,
-                    });
-                }
-
-                if (playerNum == "2") {
-                    update(ref(db, roomName + '/player2'), {
-                        AnswerColor: second_input_ans,
-                        isAnswerSet: true,
-                    });
-                }
-
-                document.getElementById("sendAnswerButton").disabled = true;
-                document.getElementById("secondColorList1").disabled = true;
-                document.getElementById("secondColorList2").disabled = true;
-                document.getElementById("secondColorList3").disabled = true;
-                document.getElementById("secondColorList4").disabled = true;
-            }
-            else if (isInputCorrect(second_input_ans) == 2) {
-                alert("色が重複しています。");
-            }
-            else {
-                alert("色が選択されていないマスがあります。");
-            }
-        });
-
-        $("#callButton").on("click", function () { //コールボタンの処理
-            const playerName = $("#playerName").val() //プレイヤー名取得
-            const playerNum = $("#playerNum").val() //プレイヤー番号取得
-            var roomName = $("#roomName").val(); //ルーム名取得
-
-            if (isInputCorrect(input_ans) == 1) {
-                console.log("CALLする色のインデックス"); //確認用(コンソール)
-                console.log(input_ans + "\n\n");
-
-                judge_result(input_ans, ans); //Hit, Blowを算出
-
-                if (playerNum == "1") { //データベースにCall内容を送信
-                    update(ref(db, roomName), {
-                        whichTurn: 2,
-                    });
-                    update(ref(db, roomName + '/player1'), {
-                        CallColor: input_ans,
-                        hit: hit,
-                        blow: blow,
-                    });
-                }
-
-                if (playerNum == "2") { //データベースにCall内容を送信
-                    update(ref(db, roomName), {
-                        whichTurn: 1,
-                    });
-                    update(ref(db, roomName + '/player2'), {
-                        CallColor: input_ans,
-                        hit: hit,
-                        blow: blow,
-                    });
-                }
-
-                document.getElementById("sendAnswerButton").disabled = true;
-            }
-            else if (isInputCorrect(input_ans) == 2) {
-                alert("色が重複しています。");
-            }
-            else {
-                alert("色が選択されていないマスがあります。");
-            }
-        });
-
-        var hit = 0;
-        var blow = 0;
-
-        var friendHit;
-        var friendBlow;
-
-        function judge_result(input_ans, ans) { //hit, blowを計算
+        function judge_result(inputAns, ans) { //hit, blowを計算
             hit = 0;
             blow = 0;
 
             for (let i = 0; i < 4; i++) { //hit, blowを求める処理
                 for (let j = 0; j < 4; j++) {
-                    if (ans[i] == input_ans[j]) {
+                    if (ans[i] == inputAns[j]) {
                         if (i == j) {
                             hit++;
                         }
@@ -649,80 +741,119 @@
             console.log("blow: " + blow);
         }
 
-        setTimeout(() => { //10秒後からオブジェクトの更新の監視を開始
-            var roomName = $("#roomName").val(); //ルーム名を取得
+        function showResult(hit, blow) { //ResultBoxにHit, Blowを表示(未)
+            function displayResultColor(idname) { //結果欄の色を表示
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = color[0];
+            }
+            function displayResultBackColor(idname) { //結果欄背景色を表示
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = '#3f3f3f';
+            }
 
-            const playerInfoRef = ref(db, roomName); //データベースのパスを指定
+            if (hit == 0) {
+            }
+            else if (hit == 1) {
+            }
+            else if (hit == 2) {
+            }
+            else if (hit == 3) {
+            }
+            else {
+            }
 
-            onValue(playerInfoRef, (snapshot) => { //オブジェクトに変更があった際にデータを取得
-                var playerNum = $("#playerNum").val();
-                whichTurn = snapshot.val().whichTurn;
+            if (blow == 0) {
+            }
+            else if (blow == 1) {
+            }
+            else if (blow == 2) {
+            }
+            else if (blow == 3) {
+            }
+            else {
+            }
+        }
 
-                var isAnswerSet1
-                var isAnswerSet2
+        function showFriendResult(friendHit, friendBlow) { //thirdResultBoxに相手のHit, Blowを表示(未)
+            function displayResultColor(idname) { //結果欄の色を表示
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = color[0];
+            }
+            function displayResultBackColor(idname) { //結果欄背景色を表示
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = '#3f3f3f';
+            }
 
-                if (playerNum == "1") {
-                    friendName = snapshot.val().player2.Name;
-                    ans = snapshot.val().player2.AnswerColor;
-                    friendCallColor = snapshot.val().player2.CallColor;
-                    friendHit = snapshot.val().player2.hit;
-                    friendBlow = snapshot.val().player2.blow;
+            //if..else.....
+            //
+            //
+            //
+            //
+        }
+
+        function showFriendCallColor(friendCallColor) { //thirdBoxに相手のコールした色を表示(未)
+            function enterColor(idname, colorIndex) { //入力した色をセルに反映(右側)
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = color[colorIndex];
+            }
+
+            //enterColor( , );
+            //
+            //
+            //
+        }
+
+        function isInputCorrect(inputAns) { //Boxの入力の空白, 重複を検出
+            function existSame(input) {
+                const setinput = new Set(input);
+                return setinput.size !== input.length;
+            }
+
+            for (let i = 0; i < 4; i++) {
+                if (inputAns[i] == undefined) {
+                    console.log("return 3");
+                    return 3;
                 }
-                if (playerNum == "2") {
-                    friendName = snapshot.val().player1.Name;
-                    ans = snapshot.val().player1.AnswerColor;
-                    friendCallColor = snapshot.val().player1.CallColor;
-                    friendHit = snapshot.val().player1.hit;
-                    friendBlow = snapshot.val().player1.blow;
+            }
+
+            if (existSame(inputAns) == true) {
+                console.log("return 2");
+                return 2;
+            }
+
+            console.log("return 1");
+            return 1;
+        }
+
+        function winLoseAlert(hit, friendHit) { //勝ち負けを判定
+            roomName = $("#roomName").val(); //ルーム名入力
+            const playerNum = $("#playerNum").val(); //プレイヤー番号取得
+
+            if (whichTurn == 1) {
+                if (hit == 4 && friendHit == 4) {
+                    leftRoom("DRAW...");
                 }
+                else if (hit == 4 && friendHit != 4) {
+                    leftRoom("YOU WIN!!");
+                }
+                else if (hit != 4 && friendHit == 4) {
+                    leftRoom("YOU LOSE...");
+                }
+            }
 
-                isAnswerSet1 = snapshot.val().player1.isAnswerSet;
-                isAnswerSet2 = snapshot.val().player2.isAnswerSet;
-
-                console.log("whichTurn: " + whichTurn);
-
-                //ここから下に処理
-
-                console.log("isAnswerSet1: " + isAnswerSet1);
-                console.log("isAnswerSet2: " + isAnswerSet2);
-                console.log("isTransitionToCall: " + isTransitionToCall)
-
-                if (isAnswerSet1 == true && isAnswerSet2 == true && isTransitionToCall == false) {
-                    update(ref(db, roomName), { //両者正答を設定したらP1のターンから始める
-                        whichTurn: 1,
+            function leftRoom(message) {
+                if (!alert(message)) {
+                    update(ref(db, roomName), { //データベースにルーム作成/ルーム名設定
+                        RoomName: null,
+                        player1: null,
+                        player2: null,
+                        whichTurn: null,
                     });
-                    isTransitionToCall = true;
+                    window.location.reload();
                 }
-
-                if (playerNum == 1) {
-                    if (whichTurn == 1) { //P1のターンのときP1のコールボタンを有効化
-                        document.getElementById("callButton").disabled = false;
-                    }
-                    else {
-                        document.getElementById("callButton").disabled = true;
-                    }
-                }
-
-                if (playerNum == 2) {
-                    if (whichTurn == 2) { //P2のターンのときP2のコールボタンを有効化
-                        document.getElementById("callButton").disabled = false;
-                    }
-                    else {
-                        document.getElementById("callButton").disabled = true;
-                    }
-                }
-
-                console.log("対戦相手: " + friendName);
-                console.log("答え: " + ans);
-                console.log("相手のコール: " + friendCallColor);
-                console.log("\n");
-                console.log("相手のHit: " + friendHit);
-                console.log("相手のBlow: " + friendBlow);
-                
-            });
-        }, 10000);
+            }
+        }
 
     </script>
 </body>
-
 </html>
