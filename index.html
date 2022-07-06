@@ -4,14 +4,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Guess_the_color_scheme</title>
+    <title>Color Guessing Game</title>
     <button id="deleteRoomButton">退出/ルーム削除</button>
 </head>
 
 <body text="entireView" class="entireView">
 
     <header>
-        <h1 class="title">TITLE</h1>
+        <h1 class="title">Color Guessing Game</h1>
     </header>
 
     <div class="line">
@@ -489,6 +489,8 @@
 
                 showResult(hit, blow); //ResultBoxに結果を反映
 
+                setTimeout(() => { resetFriendCallInfo(); }, 1000); //相手の色表示を削除
+
                 if (playerNum == "1") { //データベースにCall内容を送信
                     update(ref(db, roomName), {
                         whichTurn: 2,
@@ -574,9 +576,11 @@
                     document.getElementById("callButton").disabled = true;
                 }
                 else if (whichTurn == playerNum) { //自分のターンのときボタン等有効化
-                    document.getElementById("callButton").disabled = false;
-                    document.getElementById('myName').style.backgroundColor = color[0];
-                    document.getElementById('friendName').style.backgroundColor = 'rgb(230, 230, 230)';
+                    setTimeout(() => { //1秒後に実行
+                        document.getElementById("callButton").disabled = false;
+                        document.getElementById('myName').style.backgroundColor = color[0];
+                        document.getElementById('friendName').style.backgroundColor = 'rgb(230, 230, 230)';
+                    }, 1000);
                 }
                 else if (whichTurn != playerNum) { //自分のターンのときボタン等無効化
                     document.getElementById("callButton").disabled = true;
@@ -847,7 +851,7 @@
                 displayResultColor('friendHit3-Id');
                 displayResultBackColor('friendHit4-Id');
             }
-            else if (friendHit == 4){
+            else if (friendHit == 4) {
                 displayResultColor('friendHit1-Id');
                 displayResultColor('friendHit2-Id');
                 displayResultColor('friendHit3-Id');
@@ -878,7 +882,7 @@
                 displayResultColor('friendBlow3-Id');
                 displayResultBackColor('friendBlow4-Id');
             }
-            else if (friendBlow == 4){
+            else if (friendBlow == 4) {
                 displayResultColor('friendBlow1-Id');
                 displayResultColor('friendBlow2-Id');
                 displayResultColor('friendBlow3-Id');
@@ -896,6 +900,18 @@
             enterColor('thirdBox2-Id', friendCallColor[1]);
             enterColor('thirdBox3-Id', friendCallColor[2]);
             enterColor('thirdBox4-Id', friendCallColor[3]);
+        }
+
+        function resetFriendCallInfo() { //相手のコールした色の表示を削除
+            function enterColor(idname) { //入力した色をセルに反映(左上)
+                var obj = document.getElementById(idname);
+                obj.style.backgroundColor = 'rgb(230, 230, 230)';
+            }
+
+            enterColor('thirdBox1-Id');
+            enterColor('thirdBox2-Id');
+            enterColor('thirdBox3-Id');
+            enterColor('thirdBox4-Id');
         }
 
         function isInputCorrect(inputAns) { //Boxの入力の空白, 重複を検出
