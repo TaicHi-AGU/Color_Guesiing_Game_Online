@@ -741,7 +741,7 @@
             console.log("blow: " + blow);
         }
 
-        function showResult(hit, blow) { //ResultBoxにHit, Blowを表示(未)
+        function showResult(hit, blow) { //ResultBoxにHit, Blowを表示
             function displayResultColor(idname) { //結果欄の色を表示
                 var obj = document.getElementById(idname);
                 obj.style.backgroundColor = color[0];
@@ -752,66 +752,69 @@
             }
 
             if (hit == 0) {
-            displayResultBackColor('hit1-Id');
-            displayResultBackColor('hit2-Id');
-            displayResultBackColor('hit3-Id');
-            displayResultBackColor('hit4-Id');
+                displayResultBackColor('hit1-Id');
+                displayResultBackColor('hit2-Id');
+                displayResultBackColor('hit3-Id');
+                displayResultBackColor('hit4-Id');
             }
             else if (hit == 1) {
-            displayResultColor('hit1-Id');
-            displayResultBackColor('hit2-Id');
-            displayResultBackColor('hit3-Id');
-            displayResultBackColor('hit4-Id');
+                displayResultColor('hit1-Id');
+                displayResultBackColor('hit2-Id');
+                displayResultBackColor('hit3-Id');
+                displayResultBackColor('hit4-Id');
             }
             else if (hit == 2) {
-            displayResultColor('hit1-Id');
-            displayResultColor('hit2-Id');
-            displayResultBackColor('hit3-Id');
-            displayResultBackColor('hit4-Id');
+                displayResultColor('hit1-Id');
+                displayResultColor('hit2-Id');
+                displayResultBackColor('hit3-Id');
+                displayResultBackColor('hit4-Id');
             }
             else if (hit == 3) {
-            displayResultColor('hit1-Id');
-            displayResultColor('hit2-Id');
-            displayResultColor('hit3-Id');
-            displayResultBackColor('hit4-Id');
+                displayResultColor('hit1-Id');
+                displayResultColor('hit2-Id');
+                displayResultColor('hit3-Id');
+                displayResultBackColor('hit4-Id');
             }
             else {
-            displayResultColor('hit1-Id');
-            displayResultColor('hit2-Id');
-            displayResultColor('hit3-Id');
-            displayResultColor('hit4-Id');
+                displayResultColor('hit1-Id');
+                displayResultColor('hit2-Id');
+                displayResultColor('hit3-Id');
+                displayResultColor('hit4-Id');
             }
 
             if (blow == 0) {
-            displayResultBackColor('blow1-Id');
-            displayResultBackColor('blow2-Id');
-            displayResultBackColor('blow3-Id');
-            displayResultBackColor('blow4-Id');
+                displayResultBackColor('blow1-Id');
+                displayResultBackColor('blow2-Id');
+                displayResultBackColor('blow3-Id');
+                displayResultBackColor('blow4-Id');
             }
             else if (blow == 1) {
-            displayResultColor('blow1-Id');
-            displayResultBackColor('blow2-Id');
-            displayResultBackColor('blow3-Id');
-            displayResultBackColor('blow4-Id');}
+                displayResultColor('blow1-Id');
+                displayResultBackColor('blow2-Id');
+                displayResultBackColor('blow3-Id');
+                displayResultBackColor('blow4-Id');
+            }
             else if (blow == 2) {
-            displayResultColor('blow1-Id');
-            displayResultColor('blow2-Id');
-            displayResultBackColor('blow3-Id');
-            displayResultBackColor('blow4-Id');}
+                displayResultColor('blow1-Id');
+                displayResultColor('blow2-Id');
+                displayResultBackColor('blow3-Id');
+                displayResultBackColor('blow4-Id');
+            }
             else if (blow == 3) {
-            displayResultColor('blow1-Id');
-            displayResultColor('blow2-Id');
-            displayResultColor('blow3-Id');
-            displayResultBackColor('blow4-Id');}
+                displayResultColor('blow1-Id');
+                displayResultColor('blow2-Id');
+                displayResultColor('blow3-Id');
+                displayResultBackColor('blow4-Id');
+            }
             else {
-            displayResultColor('blow1-Id');
-            displayResultColor('blow2-Id');
-            displayResultColor('blow3-Id');
-            displayResultColor('blow4-Id');
+                displayResultColor('blow1-Id');
+                displayResultColor('blow2-Id');
+                displayResultColor('blow3-Id');
+                displayResultColor('blow4-Id');
             }
         }
 
-        function showFriendResult(friendHit, friendBlow) { //thirdResultBoxに相手のHit, Blowを表示(未)
+        function showFriendResult(friendHit, friendBlow) { //thirdResultBoxに相手のHit, Blowを表示
             function displayResultColor(idname) { //結果欄の色を表示
                 var obj = document.getElementById(idname);
                 obj.style.backgroundColor = color[0];
@@ -821,79 +824,82 @@
                 obj.style.backgroundColor = '#3f3f3f';
             }
             if (friendHit == 0) {
-            displayResultBackColor('friendHit1-Id');
-            displayResultBackColor('friendHit2-Id');
-            displayResultBackColor('friendHit3-Id');
-            displayResultBackColor('friendHit4-Id');
+                displayResultBackColor('friendHit1-Id');
+                displayResultBackColor('friendHit2-Id');
+                displayResultBackColor('friendHit3-Id');
+                displayResultBackColor('friendHit4-Id');
             }
             else if (friendHit == 1) {
-            displayResultColor('friendHit1-Id');
-            displayResultBackColor('friendHit2-Id');
-            displayResultBackColor('friendHit3-Id');
-            displayResultBackColor('friendHit4-Id');
+                displayResultColor('friendHit1-Id');
+                displayResultBackColor('friendHit2-Id');
+                displayResultBackColor('friendHit3-Id');
+                displayResultBackColor('friendHit4-Id');
             }
             else if (friendHit == 2) {
-            displayResultColor('friendHit1-Id');
-            displayResultColor('friendHit2-Id');
-            displayResultBackColor('friendHit3-Id');
-            displayResultBackColor('friendHit4-Id');
+                displayResultColor('friendHit1-Id');
+                displayResultColor('friendHit2-Id');
+                displayResultBackColor('friendHit3-Id');
+                displayResultBackColor('friendHit4-Id');
             }
             else if (friendHit == 3) {
-            displayResultColor('friendHit1-Id');
-            displayResultColor('friendHit2-Id');
-            displayResultColor('friendHit3-Id');
-            displayResultBackColor('friendHit4-Id');
+                displayResultColor('friendHit1-Id');
+                displayResultColor('friendHit2-Id');
+                displayResultColor('friendHit3-Id');
+                displayResultBackColor('friendHit4-Id');
             }
-            else {
-            displayResultColor('friendHit1-Id');
-            displayResultColor('friendHit2-Id');
-            displayResultColor('friendHit3-Id');
-            displayResultColor('friendHit4-Id');
+            else if (friendHit == 4){
+                displayResultColor('friendHit1-Id');
+                displayResultColor('friendHit2-Id');
+                displayResultColor('friendHit3-Id');
+                displayResultColor('friendHit4-Id');
             }
 
             if (friendBlow == 0) {
-            displayResultBackColor('friendBlow1-Id');
-            displayResultBackColor('friendBlow2-Id');
-            displayResultBackColor('friendBlow3-Id');
-            displayResultBackColor('friendBlow4-Id');
+                displayResultBackColor('friendBlow1-Id');
+                displayResultBackColor('friendBlow2-Id');
+                displayResultBackColor('friendBlow3-Id');
+                displayResultBackColor('friendBlow4-Id');
             }
             else if (friendBlow == 1) {
-            displayResultColor('friendBlow1-Id');
-            displayResultBackColor('friendBlow2-Id');
-            displayResultBackColor('friendBlow3-Id');
-            displayResultBackColor('friendBlow4-Id');}
+                displayResultColor('friendBlow1-Id');
+                displayResultBackColor('friendBlow2-Id');
+                displayResultBackColor('friendBlow3-Id');
+                displayResultBackColor('friendBlow4-Id');
+            }
             else if (friendBlow == 2) {
-            displayResultColor('friendBlow1-Id');
-            displayResultColor('friendBlow2-Id');
-            displayResultBackColor('friendBlow3-Id');
-            displayResultBackColor('friendBlow4-Id');}
-            else if (friendBlows == 3) {
-            displayResultColor('friendBlow1-Id');
-            displayResultColor('friendBlow2-Id');
-            displayResultColor('friendBlow3-Id');
-            displayResultBackColor('friendBlow4-Id');}
-            else {
-            displayResultColor('friendBlow1-Id');
-            displayResultColor('friendBlow2-Id');
-            displayResultColor('friendBlow3-Id');
-            displayResultColor('friendBlow4-Id');
+                displayResultColor('friendBlow1-Id');
+                displayResultColor('friendBlow2-Id');
+                displayResultBackColor('friendBlow3-Id');
+                displayResultBackColor('friendBlow4-Id');
+            }
+            else if (friendBlow == 3) {
+                displayResultColor('friendBlow1-Id');
+                displayResultColor('friendBlow2-Id');
+                displayResultColor('friendBlow3-Id');
+                displayResultBackColor('friendBlow4-Id');
+            }
+            else if (friendBlow == 4){
+                displayResultColor('friendBlow1-Id');
+                displayResultColor('friendBlow2-Id');
+                displayResultColor('friendBlow3-Id');
+                displayResultColor('friendBlow4-Id');
             }
         }
 
-        function showFriendCallColor(friendCallColor) { //thirdBoxに相手のコールした色を表示(未)
+        function showFriendCallColor(friendCallColor) { //thirdBoxに相手のコールした色を表示
             function enterColor(idname, colorIndex) { //入力した色をセルに反映(右側)
                 var obj = document.getElementById(idname);
                 obj.style.backgroundColor = color[colorIndex];
             }
 
-          enterColor('thirdBox1-Id',friendCallColor[0]);
-          enterColor('thirdBox2-Id',friendCallColor[1]);
-          enterColor('thirdBox3-Id',friendCallColor[2]);
-          enterColor('thirdBox4-Id',friendCallColor[3]);
+            enterColor('thirdBox1-Id', friendCallColor[0]);
+            enterColor('thirdBox2-Id', friendCallColor[1]);
+            enterColor('thirdBox3-Id', friendCallColor[2]);
+            enterColor('thirdBox4-Id', friendCallColor[3]);
         }
 
         function isInputCorrect(inputAns) { //Boxの入力の空白, 重複を検出
-            function existSame(input) {
+            function existSame(input) { //同じ要素を検出
                 const setinput = new Set(input);
                 return setinput.size !== input.length;
             }
@@ -945,4 +951,5 @@
 
     </script>
 </body>
+
 </html>
