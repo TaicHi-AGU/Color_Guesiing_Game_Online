@@ -18,20 +18,26 @@
         <div class="VStack">
             <div class="formArea">
                 <div class="formLine">
-                    <div class="formText">Room Name : </div><input type="text" id="roomName" size="10">
-                    <form name="playerNum" align="center" class="playerNum">
-                        <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
-                            id="playerNum">
-                            <OPTION SELECTED>Player</OPTION>
-                            <OPTION value=1>1</OPTION>
-                            <OPTION value=2>2</OPTION>
-                        </SELECT>
-                    </form>
-                    <button id="roomNameEnter">Enter</button>
+                    <div class="formText">Room Name : </div>
+                    <div class="formInput">
+                        <input type="text" id="roomName" size="10">
+                        <form name="playerNum" align="center" class="playerNum">
+                            <SELECT NAME="playerNum" style="font-size:10pt;color:black;background-color:white"
+                                id="playerNum">
+                                <OPTION SELECTED>Player</OPTION>
+                                <OPTION value=1>1</OPTION>
+                                <OPTION value=2>2</OPTION>
+                            </SELECT>
+                        </form>
+                    </div>
+                    <button id="roomNameEnter" class="Enter">Enter</button>
                 </div>
                 <div class="formLine">
-                    <div class="formText">Your Name : </div><input type="text" id="playerName" class="playerName">
-                    <button id="playerNameEnter" class="playerNameEnter">Enter</button>
+                    <div class="formText">Your Name : </div>
+                    <div class="formInput">
+                        <input type="text" id="playerName" class="playerName">
+                    </div>
+                    <button id="playerNameEnter" class="Enter">Enter</button>
                 </div>
             </div>
             <div id="myName" class="myName">&nbsp;</div>
@@ -42,7 +48,7 @@
                         <div id="box1-Id" class="box box1">
                             <form name="form1" align="center">
                                 <SELECT NAME="color1" style="font-size:10pt;color:black;background-color:white"
-                                    id="colorList">
+                                    id="colorList1">
                                     <OPTION SELECTED>色を選択</OPTION>
                                     <OPTION value=0>0.Red</OPTION>
                                     <OPTION value=1>1.Orange</OPTION>
@@ -62,7 +68,7 @@
                         <div id="box2-Id" class="box box2">
                             <form name="form2" align="center">
                                 <SELECT NAME="color2" style="font-size:10pt;color:black;background-color:white"
-                                    id="colorList">
+                                    id="colorList2">
                                     <OPTION SELECTED>色を選択</OPTION>
                                     <OPTION value=0>0.Red</OPTION>
                                     <OPTION value=1>1.Orange</OPTION>
@@ -85,7 +91,7 @@
                         <div id="box3-Id" class="box box3">
                             <form name="form3" align="center">
                                 <SELECT NAME="color3" style="font-size:10pt;color:black;background-color:white"
-                                    id="colorList">
+                                    id="colorList3">
                                     <OPTION SELECTED>色を選択</OPTION>
                                     <OPTION value=0>0.Red</OPTION>
                                     <OPTION value=1>1.Orange</OPTION>
@@ -105,7 +111,7 @@
                         <div id="box4-Id" class="box box4">
                             <form name="form4" align="center">
                                 <SELECT NAME="color4" style="font-size:10pt;color:black;background-color:white"
-                                    id="colorList">
+                                    id="colorList4">
                                     <OPTION SELECTED>色を選択</OPTION>
                                     <OPTION value=0>0.Red</OPTION>
                                     <OPTION value=1>1.Orange</OPTION>
@@ -164,9 +170,7 @@
         </div>
 
         <div class="VStack">
-
             <div class="secondOutsideBox">
-
                 <div class="line">
                     <div class="space">
                         <div id="secondBox1-Id" class="secondBox secondBox1">
@@ -436,6 +440,10 @@
                 document.getElementById("playerName").disabled = true;
                 document.getElementById("playerNameEnter").disabled = true;
                 document.getElementById("sendAnswerButton").disabled = false;
+                document.getElementById("secondColorList1").disabled = false;
+                document.getElementById("secondColorList2").disabled = false;
+                document.getElementById("secondColorList3").disabled = false;
+                document.getElementById("secondColorList4").disabled = false;
             }
         });
 
@@ -445,9 +453,6 @@
             var roomName = $("#roomName").val();
 
             if (isInputCorrect(secondInputAns) == 1) {
-                console.log("設定した答え"); //選択インデックス確認用(コンソール)
-                console.log(secondInputAns);
-
                 if (playerNum == "1") {
                     update(ref(db, roomName + '/player1'), {
                         AnswerColor: secondInputAns,
@@ -467,6 +472,10 @@
                 document.getElementById("secondColorList2").disabled = true;
                 document.getElementById("secondColorList3").disabled = true;
                 document.getElementById("secondColorList4").disabled = true;
+                document.getElementById("colorList1").disabled = false;
+                document.getElementById("colorList2").disabled = false;
+                document.getElementById("colorList3").disabled = false;
+                document.getElementById("colorList4").disabled = false;
             }
             else if (isInputCorrect(secondInputAns) == 2) {
                 alert("色が重複しています。");
@@ -482,9 +491,6 @@
             var roomName = $("#roomName").val(); //ルーム名取得
 
             if (isInputCorrect(inputAns) == 1) {
-                console.log("CALLする色のインデックス"); //確認用(コンソール)
-                console.log(inputAns + "\n\n");
-
                 judge_result(inputAns, ans); //Hit, Blowを算出
 
                 showResult(hit, blow); //ResultBoxに結果を反映
@@ -555,13 +561,7 @@
                 isAnswerSet1 = snapshot.val().player1.isAnswerSet;
                 isAnswerSet2 = snapshot.val().player2.isAnswerSet;
 
-                console.log("whichTurn: " + whichTurn);
-
                 //以下処理
-
-                console.log("isAnswerSet1: " + isAnswerSet1);
-                console.log("isAnswerSet2: " + isAnswerSet2);
-                console.log("isTransitionToCall: " + isTransitionToCall)
 
                 document.getElementById("friendName").innerText = friendName;
 
@@ -592,14 +592,6 @@
                 showFriendCallColor(friendCallColor);
 
                 setTimeout(() => { winLoseAlert(hit, friendHit);; }, 1000);
-
-                console.log("対戦相手: " + friendName);
-                console.log("答え: " + ans);
-                console.log("相手のコール: " + friendCallColor);
-                console.log("\n");
-                console.log("自分のHit: " + hit);
-                console.log("相手のHit: " + friendHit);
-                console.log("相手のBlow: " + friendBlow);
             });
         }, 10000);
 
@@ -625,10 +617,14 @@
             document.getElementById("playerNameEnter").disabled = true;
             document.getElementById("sendAnswerButton").disabled = true;
             document.getElementById("callButton").disabled = true;
-            document.getElementById("secondColorList1").disabled = false;
-            document.getElementById("secondColorList2").disabled = false;
-            document.getElementById("secondColorList3").disabled = false;
-            document.getElementById("secondColorList4").disabled = false;
+            document.getElementById("secondColorList1").disabled = true;
+            document.getElementById("secondColorList2").disabled = true;
+            document.getElementById("secondColorList3").disabled = true;
+            document.getElementById("secondColorList4").disabled = true;
+            document.getElementById("colorList1").disabled = true;
+            document.getElementById("colorList2").disabled = true;
+            document.getElementById("colorList3").disabled = true;
+            document.getElementById("colorList4").disabled = true;
         }
 
         window.onload = function () { //入力を感知してenterColor()を実行
@@ -740,9 +736,6 @@
                     }
                 }
             }
-
-            console.log("hit: " + hit);
-            console.log("blow: " + blow);
         }
 
         function showResult(hit, blow) { //ResultBoxにHit, Blowを表示
@@ -922,17 +915,14 @@
 
             for (let i = 0; i < 4; i++) {
                 if (inputAns[i] == undefined) {
-                    console.log("return 3");
                     return 3;
                 }
             }
 
             if (existSame(inputAns) == true) {
-                console.log("return 2");
                 return 2;
             }
 
-            console.log("return 1");
             return 1;
         }
 
